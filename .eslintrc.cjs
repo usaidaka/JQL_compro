@@ -40,7 +40,6 @@ module.exports = {
     'default-param-last': 'off',
     'import/no-extraneous-dependencies': 'off',
     'default-case': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
     'react/function-component-definition': [
       2,
       {

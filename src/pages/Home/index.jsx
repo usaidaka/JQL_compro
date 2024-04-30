@@ -1,106 +1,52 @@
-import { useEffect, useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { getUserRoute } from '@pages/Trip/actions';
+import { useEffect } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import VerticalAlignTopIcon from '@mui/icons-material/VerticalAlignTop';
-import _ from 'lodash';
-import Loader from '@components/Loader';
+import { connect, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
+
+import { fetchPokemon } from './actions';
+import { selectPokemon } from './selectors';
 
 import classes from './style.module.scss';
-import { getNearby, getProfile, getProvince, getFollowingPost } from './actions';
-import Post from './components/Post';
-import { selectFollowingPost } from './selectors';
-import CardPost from './components/CardPost';
 
-const Home = ({ followingPost, loadingTest = true }) => {
+const Home = ({ pokemon }) => {
   const dispatch = useDispatch();
-  const [next, setNext] = useState(0);
-  const [followingData, setFollowingData] = useState([]);
-  const [isMore, setIsMore] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      await Promise.all([
-        dispatch(
-          getProfile(() => {
-            setLoading(false);
-          })
-        ),
-        dispatch(
-          getProvince(() => {
-            setLoading(false);
-          })
-        ),
-        dispatch(
-          getNearby(() => {
-            setLoading(false);
-          })
-        ),
-        dispatch(
-          getUserRoute(() => {
-            setLoading(false);
-          })
-        ),
-      ]);
-    };
-
-    fetchData();
+    dispatch(fetchPokemon())
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getFollowingPost({ next }));
-  }, [dispatch, next]);
-
-  useEffect(() => {
-    if (!_.isEmpty(followingPost)) {
-      setFollowingData((prev) => [...prev, ...followingPost]);
-      setIsMore(followingPost.length >= 6);
-    } else {
-      setIsMore(false);
-    }
-  }, [followingPost]);
-
-  const handleLoadMore = () => {
-    setNext((prev) => prev + 6);
-  };
-
-  if (loading && loadingTest) {
-    return <Loader isLoading={loading} />;
-  }
-
   return (
-    <div data-testid="home" id="top" className={classes.container}>
-      <Post fetch={setFollowingData} next={next} />
-      {followingData.map((data, idx) => (
-        <CardPost key={idx} post={data} />
-      ))}
-      {isMore ? (
-        <div onClick={handleLoadMore} className={classes.expand}>
-          <button type="button">
-            <ExpandMoreIcon />
-          </button>
+    <div className={classes.home}>
+      <div className={classes.homeWrapper}>
+        <h1 className={classes.title}>
+          <FormattedMessage id="app_greeting" />
+        </h1>
+        <div className={classes.lengthWrapper}>
+          <div className={classes.length}>
+            {pokemon.length}++
+          </div>
         </div>
-      ) : (
-        <a href="#top" className={classes.expand}>
-          <button type="button">
-            <VerticalAlignTopIcon />
-          </button>
-        </a>
-      )}
+        <div className={classes.buyNow} onClick={() => navigate('/courses')}>
+          <FormattedMessage id="navigate_to_product_texts" />
+        </div>
+        {pokemon?.map((item) => {
+          return <Cards />
+        })}
+      </div>
     </div>
   );
 };
 
 Home.propTypes = {
-  followingPost: PropTypes.array,
-  loadingTest: PropTypes.bool,
+  pokemon: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  followingPost: selectFollowingPost,
+  pokemon: selectPokemon
 });
 
 export default connect(mapStateToProps)(Home);

@@ -15,8 +15,7 @@
       "@static/*": ["./src/static/*"],
       "@store": ["./src/configureStore.js"],
       "@styles/*": ["./src/styles*"],
-      "@utils/*": ["./src/utils/*"],
-      "@assets/*": ["./assets/*"]
+      "@utils/*": ["./src/utils/*"]
     },
     "allowSyntheticDefaultImports": true
   },

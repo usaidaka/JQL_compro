@@ -1,0 +1,252 @@
+@import '@styles/base';
+
+.headerWrapper {
+  background-color: var(--color-bg) !important;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+  .contentWrapper {
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .dropDown {
+      display: none;
+      @include apply-at-xl-size {
+        @include directionX;
+      }
+    }
+
+    .dropdown-wrapper {
+      @include directionX;
+    }
+
+    @include directionX;
+
+    color: var(--color-text);
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    .drawer-phone {
+      display: block;
+      @include apply-at-xl-size {
+        display: none;
+      }
+      .logoImage {
+        @include directionX;
+        cursor: pointer;
+        align-items: center;
+      }
+
+      .header {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo {
+        width: 15%;
+        height: 100%;
+        margin-right: 0.5rem;
+        @include apply-at-xl-size {
+          width: 15%;
+          padding-left: 20px;
+        }
+      }
+      .title {
+        font-weight: 700;
+      }
+    }
+
+    .toolbar {
+      @include directionX;
+      .theme {
+        @include directionX;
+        align-items: center;
+        margin-right: 0.5rem;
+        cursor: pointer;
+      }
+
+      .toggleImage {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 100%;
+        cursor: pointer;
+        .photo-profile {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .toggle {
+        @include directionX;
+        align-items: center;
+        cursor: pointer;
+
+        .avatar {
+          width: 1.2rem;
+          height: 1.2rem;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          margin-right: 0.5rem;
+        }
+
+        .lang {
+          font-family: Poppins, Arial, Helvetica, sans-serif;
+          font-weight: 700;
+          font-size: 1rem;
+          text-transform: uppercase;
+        }
+
+        .arrow {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.menu {
+  @include directionX;
+  align-items: center;
+
+  .menuAvatar {
+    width: 1rem;
+    height: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-right: 0.5rem;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  .menuLang {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+  }
+}
+
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  margin-top: 10px;
+
+  @include apply-at-xl-size {
+    padding: 0px 10px;
+  }
+
+  .sidebar-left {
+    position: sticky;
+    top: 10px;
+    border-radius: 6px;
+    display: none;
+
+    @include apply-at-xl-size {
+      height: 97vh;
+      padding: 20px;
+      display: block;
+      width: 20%;
+      background-color: $color-white;
+      .profile-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .card {
+          overflow: hidden;
+          display: flex;
+          gap: 12px;
+          flex-direction: column;
+          align-items: center;
+
+          .image {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+
+    .side-nav {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 14px;
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        span {
+          font-size: 16px;
+        }
+
+        &[data-active='true'] {
+          color: $color-pink;
+        }
+      }
+    }
+  }
+
+  .children {
+    border-radius: 6px;
+    background-color: $color-white;
+    width: 100%;
+    height: 100%;
+    @include apply-at-xl-size {
+      width: 53%;
+
+      &[data-active='true'] {
+        width: 80%;
+      }
+    }
+  }
+
+  .sidebar-right {
+    position: sticky;
+    top: 10px;
+    border-radius: 6px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: $color-white;
+    display: none;
+    height: 100%;
+    @include apply-at-xl-size {
+      width: 27%;
+      display: block;
+    }
+
+    .maps {
+      border-radius: 6px;
+      overflow: hidden;
+      height: 400px;
+      width: 100%;
+    }
+  }
+}

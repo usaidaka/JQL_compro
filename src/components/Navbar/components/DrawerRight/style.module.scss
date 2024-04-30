@@ -1,0 +1,14 @@
+@import '@styles/base';
+
+.sidebar-right {
+  padding: 20px;
+  display: block;
+  width: 20%;
+  background-color: $color-white;
+  .maps {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
+  }
+}

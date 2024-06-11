@@ -9,5 +9,5 @@ export default {
   app_popup_close_button_label: 'Tutup',
   register_title_text: 'Daftar',
   navigate_to_product_texts: 'Halaman Produk',
-  error: 'blablabla'
+  error: 'blablabla',
 };

@@ -3,7 +3,7 @@ import { produce } from 'immer';
 import { SET_POKEMON } from './constants';
 
 export const initialState = {
-  pokemon: {}
+  pokemon: {},
 };
 
 export const storedKey = ['pokemon'];

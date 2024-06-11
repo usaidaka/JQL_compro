@@ -27,7 +27,6 @@ const Navbar = ({ title, locale }) => {
     setMenuPosition(null);
   };
 
-
   const onSelectLang = (lang) => {
     if (lang !== locale) {
       dispatch(setLocale(lang));

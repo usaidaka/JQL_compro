@@ -1,14 +1,12 @@
+import Hero from './components/Hero';
 import classes from './style.module.scss';
 
 const Home = () => {
-
   return (
     <div className={classes.home}>
-      <h2>test</h2>
+      <Hero />
     </div>
   );
 };
-
-
 
 export default Home;

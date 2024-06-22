@@ -8,56 +8,97 @@
   .contentWrapper {
     @include directionX;
 
+    @include apply-at-xl-size {
+      padding: 1rem;
+    }
+
+    @include apply-at-lg-size {
+      padding: 1rem;
+    }
+
     color: var(--color-text);
     padding: 1rem;
     align-items: center;
     justify-content: space-between;
     font-size: 1rem;
 
-    .logoImage {
-      @include directionX;
-      cursor: pointer;
-      align-items: center;
+    .logoHead {
+      .logoImage {
+        @include directionX;
+        cursor: pointer;
+        align-items: center;
 
-      .logo {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
-      }
-      .title {
-        font-weight: 700;
+        .logo {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 0.5rem;
+        }
+        .title {
+          font-weight: 700;
+        }
       }
     }
 
-    .toolbar {
+    .navigationWrapper {
       @include directionX;
-      .theme {
-        @include directionX;
-        align-items: center;
-        margin-right: 0.5rem;
-        cursor: pointer;
+
+      .navigator {
+        padding-right: 20px;
+        display: none;
+        @include apply-at-xl-size {
+          @include directionX;
+          gap: 18px;
+        }
+
+        @include apply-at-lg-size {
+          @include directionX;
+          gap: 18px;
+        }
       }
-      .toggle {
+
+      .navigatorMobile {
         @include directionX;
-        align-items: center;
-        cursor: pointer;
+        gap: 6px;
+        padding-right: 20px;
+        @include apply-at-xl-size {
+          display: none;
+        }
 
-        .avatar {
-          width: 1.2rem;
-          height: 1.2rem;
-          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        @include apply-at-lg-size {
+          display: none;
+        }
+      }
+
+      .toolbar {
+        @include directionX;
+        .theme {
+          @include directionX;
+          align-items: center;
           margin-right: 0.5rem;
+          cursor: pointer;
         }
+        .toggle {
+          @include directionX;
+          align-items: center;
+          cursor: pointer;
 
-        .lang {
-          font-family: Poppins, Arial, Helvetica, sans-serif;
-          font-weight: 700;
-          font-size: 1rem;
-          text-transform: uppercase;
-        }
+          .avatar {
+            width: 1.2rem;
+            height: 1.2rem;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            margin-right: 0.5rem;
+          }
 
-        .arrow {
-          font-size: 1rem;
+          .lang {
+            font-family: Poppins, Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+          }
+
+          .arrow {
+            font-size: 1rem;
+          }
         }
       }
     }

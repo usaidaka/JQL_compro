@@ -1,0 +1,29 @@
+@import '@styles/base';
+
+.button {
+  color: black;
+  background-color: red;
+}
+
+.drawerRight {
+  padding: 1rem;
+
+  .navDrawer {
+    margin-bottom: 20px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #b9b9b9;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    &[data-active='true'] {
+      color: red;
+    }
+  }
+}

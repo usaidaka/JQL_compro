@@ -56,8 +56,6 @@ const Navbar = ({ title, locale }) => {
     navigate('/');
   };
 
-  console.log(productsNavList.productNavList);
-
   return (
     <div className={classes.headerWrapper} data-testid="navbar">
       <div className={classes.contentWrapper}>
